@@ -1,0 +1,94 @@
+<html>
+
+<head>
+  <title>Online Bank</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <a href="index.html"><img src="banklogo.png" alt="Your Online Bank Logo"></a>
+    <h1>Online Bank</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Accounts.html">Accounts</a>
+    <a href="Deposit.html">Deposit</a>
+    <a href="Transfer.html">Transfer</a>
+    <a href="Atm.html">ATM</a>
+    <a href="#">Logout</a>
+  </nav>
+
+  <section class="transfer">
+    <h2>Transfer Money</h2>
+
+    <div class="t-row">
+      <div class="t-col">
+        <h4>Transfer from</h4>
+        <br>
+        <select name="accountFrom" id="accountsFrom" required>
+          <option value="" disabled selected hidden>Choose an account</option>
+          <option value="accountF1">Fake Account 1</option>
+          <option value="accountF2">This dropdown</option>
+          <option value="accountF3">will be fixed later</option>
+        </select>
+      </div>
+
+      <div class="t-col">
+        <h4>Transfer to</h4>
+        <br>
+        <select name="accountTo" id="accountsTo" required>
+          <option value="" disabled selected hidden>Choose an account</option>
+          <option value="account1">Fake Account 1</option>
+          <option value="account2">This dropdown</option>
+          <option value="account3">will be fixed later</option>
+        </select>
+      </div>
+
+      <div class="t-col">
+        <h4>Amount</h4>
+        <br>
+        <input type="number" id="amount" name="amount" min="1" placeholder="Enter amount" required>
+      </div>
+    </div>
+
+    <div class="t-row-double">
+      <div class="t-col">
+        <h4>Transfer date</h4>
+        <br>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <div class="t-col">
+        <h4>Note to self (optional)</h4>
+        <br>
+        <textarea id="note" name="note" rows="1" cols="40"></textarea>
+      </div>
+    </div>
+
+    <div class="t-row-double-but">
+      <div class="t-col-button">
+        <a href="index.html" class="hero-button-grey">Cancel</a>
+      </div>
+
+      <div class="t-col-button">
+        <a href="index.html" class="hero-button-transfer">Submit</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="about-us">
+      <h3>About Us</h3>
+      <p>
+        Welcome to Your Online Bank, where we strive to provide you with a seamless and secure banking experience.
+        Our mission is to empower individuals with convenient financial services, ensuring your money is easily
+        accessible and your transactions are handled with the utmost care.
+      </p>
+    </div>
+    &copy; 2023 Online Bank. All rights reserved.
+  </footer>
+</body>
+
+</html>

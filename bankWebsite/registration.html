@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NOIR CAPITAL BANK -- Register</title>
+    <style>
+      #divChange {
+        width: 100px;
+        height: 100px;
+        background: url(home.png);
+        background-size: contain;
+        position: relative;
+        animation-name: example;
+        animation-duration: 4s;
+        animation-iteration-count: 1;
+      }
+
+      @keyframes example {
+        0% {
+          top: 600px;
+          width: 500px;
+          height: 500px;
+        }
+
+        100% {
+          width: 100px;
+          height: 100px;
+          top: 0px;
+        }
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #060606;
+        background-image: linear-gradient(
+          43deg,
+          #060606 0%,
+          #868484 22%,
+          #3e3c37 49%,
+          #b1afaf 75%,
+          #151313 100%
+        );
+      }
+
+      .alignment {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .alignment input {
+        left: 50px;
+        margin-top: 5px;
+        width: 3%;
+        padding-left: 10px;
+      }
+
+      .alignment label {
+        width: 100%;
+        padding: 5px;
+      }
+
+      .labelColor {
+        background-color: black;
+      }
+
+      .option {
+        background-color: #e1fcd8;
+        background-image: linear-gradient(
+          43deg,
+          #e1fcd8 0%,
+          #95f595 46%,
+          #93e388 100%
+        );
+        border-color: white;
+      }
+
+      #container {
+        height: 80%;
+        width: 70%;
+        max-height: 1000px;
+        max-width: 500px;
+        background-color: #595f57;
+        text-align: center;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #101111;
+        background-image: linear-gradient(
+          160deg,
+          #101111 0%,
+          #2d3030 19%,
+          #262829 39%,
+          #95989b 60%,
+          #2b2b2b 80%,
+          #151212 100%
+        );
+      }
+
+      @media (max-width: 600px) {
+        #container {
+          width: 90%;
+        }
+      }
+
+      #nameField {
+        background-color: clear;
+      }
+
+      .my_bttn:hover {
+        background-color: #629c44;
+        transition: 0.5s;
+      }
+
+      .my_bttn:focus {
+        outline-color: transparent;
+        outline-style: solid;
+        box-shadow: 0 0 0 2px gray;
+        transition: 0.5s;
+      }
+
+      #passwordLabel {
+        font-weight: bold;
+        font-size: 18px;
+        color: white;
+      }
+
+      #reEnterPasswordLabel {
+        font-weight: bold;
+        font-size: 18px;
+        color: white;
+      }
+
+      #titleLabel {
+        font-weight: bold;
+        font-size: 36px;
+        color: white;
+      }
+
+      #emailLabel {
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+      }
+
+      #securityQuestion {
+        height: 31px;
+        width: 355px;
+      }
+
+      #passwordField {
+        height: 20px;
+        width: 350px;
+        background-color: #b5bab5;
+        background-image: linear-gradient(
+          45deg,
+          #b5bab5 0%,
+          #f1f1eb 50%,
+          #d3d6d3 100%
+        );
+      }
+
+      #reEnterPasswordField {
+        height: 20px;
+        width: 350px;
+        background-color: #b5bab5;
+        background-image: linear-gradient(
+          45deg,
+          #b5bab5 0%,
+          #f1f1eb 50%,
+          #d3d6d3 100%
+        );
+      }
+
+      #securityQuestionLabel {
+        font-weight: bold;
+        font-size: 12px;
+        color: white;
+      }
+
+      #securityQuestionTextArea {
+        resize: none;
+        height: 89px;
+        width: 350px;
+        background-color: #b5bab5;
+        background-image: linear-gradient(
+          45deg,
+          #b5bab5 0%,
+          #f1f1eb 50%,
+          #d3d6d3 100%
+        );
+      }
+
+      #createProjOP {
+        font-size: 18px;
+        text-align: center;
+        color: lightgray;
+        font-family: "Open Sans", sans-serif;
+        background-color: #000000;
+        background-image: linear-gradient(
+          43deg,
+          #000000 0%,
+          #6d737a 46%,
+          #151313 100%
+        );
+      }
+
+      #emailField {
+        height: 25px;
+        width: 350px;
+        background-color: #b5bab5;
+        background-image: linear-gradient(
+          45deg,
+          #b5bab5 0%,
+          #f1f1eb 50%,
+          #d3d6d3 100%
+        );
+      }
+
+      #textLabel {
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+      }
+
+      #textField {
+        height: 25px;
+        width: 350px;
+        background-color: #b5bab5;
+        background-image: linear-gradient(
+          45deg,
+          #b5bab5 0%,
+          #f1f1eb 50%,
+          #d3d6d3 100%
+        );
+      }
+
+      #titleLabel {
+        font-weight: bold;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <center>
+    <body>
+      <div id="divChange"></div>
+      <div id="container">
+        <form action="/registrationprocess.php" method="post">
+          <label id="titleLabel">User Registration Change</label>
+          <br>
+          <br>
+          <label id="emailLabel">Email:</label>
+          <br />
+          <input
+            id="emailField"
+            type="text"
+            placeholder="ex: sjsustudent@sjsu.com"
+            name="email"
+          />
+          <br />
+          <label id="textLabel">User Name</label>
+          <br />
+          <input id="textField" type="text" name="username" />
+          <br />
+          <label id="passwordLabel">Password:</label>
+          <br />
+          <input
+            id="passwordField"
+            type="password"
+            placeholder="saef453$a.."
+            name="password"
+          />
+          <br />
+          <label id="reEnterPasswordLabel">Re Enter Password:</label>
+          <br />
+          <input
+            id="reEnterPasswordField"
+            type="password"
+            placeholder="saef453$a.."
+            name="password2"
+          />
+          <br />
+          <label id="textLabel">Phone Number</label>
+          <br />
+          <input id="textField" type="text" name="phone" />
+          <br />
+          <label id="textLabel">Current Address</label>
+          <br />
+          <input id="textField" type="text" name="address" />
+          <br />
+          <label id="textLabel">Zip Code</label>
+          <br />
+          <input id="textField" type="text" name="zipcode" />
+          <br />
+          <label id="textLabel">Residing State</label>
+          <br />
+          <input id="textField" type="text" name="state" />
+          <br />
+          <br />
+          <select
+            id="securityQuestion"
+            name="securityquestion"
+            style="
+              background-color: #f0f5f5;
+              background-image: linear-gradient(
+                90deg,
+                #f0f5f5 0%,
+                #9b9b9b 33%,
+                #746d6d 66%,
+                #aec4c4 100%
+              );
+            "
+          >
+            <option>What is your favorite food?</option>
+            <option>What was your first car?</option>
+            <option>What is the name of your first pet?</option>
+            <option>What is your favorite movie?</option>
+            <option selected style="background-color: white">
+              Choose Security Question
+            </option>
+          </select>
+          <textarea
+            id="securityQuestionTextArea"
+            name="securityresponse"
+            placeholder="Enter answer to security question..."
+          ></textarea>
+          <br />
+          <button
+            id="createProjOP"
+            class="my_bttn"
+            type="submit"
+            value="Register"
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </body>
+  </center>
+</html>

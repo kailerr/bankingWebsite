@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+
+  <link rel="stylesheet" type="text/css" href="home.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <header>
+    <a href "#" class="logo">NOIR CAPITAL BANK</a>
+
+    <ul class="navlist">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="login.html">Sign In</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="bx bx-menu" id="menu-icon"></div>
+  </header>
+
+  <section class="bank">
+    <div class="bank-text">
+      <h5>Sign On To Manage Your Accounts</h5>
+      <h4>How Can We Assist You?</h4>
+      <h1>Keep Track Of All Your Financials, Smarter</h1>
+      <p>Open A Checkings Or Savings Account Today.</p>
+    </div>
+    <div class="bank-login">
+      <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Log In</button>
+        <button onclick="openPopOutWindow()">No Account? Sign Up Now</button>
+
+        <script>
+          function openPopOutWindow() {
+            var url = 'bankregistration.html'; // Replace with the actual URL
+            var width = 550;
+            var height = 550;
+            var left = (screen.width - width) / 2;
+            var top = (screen.height - height) / 2 + -60;
+
+            // Open a new pop-out window
+            window.open(url, 'PopOutWindow', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+          }
+        </script>
+      </form>
+    </div>
+  </section>
+  <div class="icons">
+
+  </div>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <script src="home.js"></script>
+  <footer>
+    &copy; 2023 Noir Banking Co. All rights reserved.
+  </footer>
+</body>
+
+</html>

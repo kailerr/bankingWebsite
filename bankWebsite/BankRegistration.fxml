@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="450.0" style="-fx-background-color: #white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ProjectController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#629c44" height="39.0" layoutX="-2.0" layoutY="482.0" stroke="#629c44" strokeType="INSIDE" width="454.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#629c44" height="103.0" layoutY="-1.0" stroke="#629c44" strokeType="INSIDE" width="450.0" />
+      <TextField fx:id="nameField" layoutX="119.0" layoutY="131.0" style="-fx-background-color: white;" />
+      <Button ellipsisString="" layoutX="167.0" layoutY="412.0" mnemonicParsing="false" onAction="#createProjOP" prefHeight="17.0" prefWidth="133.0" scaleZ="2.0" style="-fx-background-color: white; -fx-border-color: #629c44; -fx-border-width: 4;" text="Register" textFill="#629c44">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="28.0" layoutY="111.0" text="Password:" textFill="#1b1a1a">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="188.0" text="Re Enter Password:" textFill="#110f0f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="293.0" layoutY="-12.0" textFill="#eee7e7">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="28.0" layoutY="65.0" text="Email:" textFill="#fffffb">
+         <font>
+            <Font name="Lucida Sans Demibold" size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox layoutX="30.0" layoutY="276.0" prefHeight="31.0" prefWidth="407.0" />
+      <TextField layoutX="29.0" layoutY="139.0" prefHeight="39.0" prefWidth="372.0" text="*********" />
+      <TextField layoutX="30.0" layoutY="215.0" prefHeight="39.0" prefWidth="372.0" text="*********" />
+      <Label layoutX="186.0" layoutY="283.0" text="Security Question" textFill="#110f0f">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="30.0" layoutY="307.0" prefHeight="89.0" prefWidth="407.0" style="-fx-background-color: darkgray;" text=".....&#10;" />
+      <TextField layoutX="92.0" layoutY="60.0" prefHeight="31.0" prefWidth="310.0" text="sjsustudent@sjsu.com" />
+      <Button layoutX="406.0" layoutY="8.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="27.0" style="-fx-background-color: #629c44; -fx-border-color: white; -fx-border-width: 2;" text="X" textFill="#f8f6f6" />
+      <Label layoutX="127.0" layoutY="8.0" text="User Registration">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop color="WHITE" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+   </children>
+</AnchorPane>

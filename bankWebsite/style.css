@@ -1,0 +1,247 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+header img {
+  max-width: 100px;
+  height: auto;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+header h1 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  margin-left: 20px;
+}
+
+h2 {
+  margin-left: 20px;
+}
+
+nav {
+  background-color: #444;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 1em;
+  margin: 0 1em;
+}
+
+section {
+  padding: 2em;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2em;
+}
+
+form label {
+  margin-bottom: 0.5em;
+}
+
+form input {
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 0.5em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1.0em;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+.hero-button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em;
+  background-color: #4caf50;
+  position: relative;
+  cursor: pointer;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.hero-button-transfer {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5em;
+  background-color: #4caf50;
+  position: relative;
+  cursor: pointer;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.hero-button-grey {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5em;
+  background-color: grey;
+  position: relative;
+  cursor: pointer;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.hero-button-grey:hover {
+  background-color: #555;
+}
+
+.hero-button:hover {
+  background-color: #45a049;
+}
+
+.hero-button-transfer:hover {
+  background-color: #45a049;
+}
+
+.about-us {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.t-row {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.t-row-double {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.t-row-double-but {
+  margin-top: 2%;
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.t-col-button {
+  display: grid;
+  flex-basis: 0%;
+  justify-content: center;
+}
+
+.t-col {
+  flex-basis: 31%;
+  background: #f0fff0;
+  border-radius: 15px;
+  margin-bottom: 2%;
+  padding: 20px 12px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+
+.t-col h4 {
+  color: rgba(128, 128, 128);
+}
+
+.cards {
+  width: 400px;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+h3 {
+  margin-bottom: 10px;
+}
+
+h4,
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.bankAccounts {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
