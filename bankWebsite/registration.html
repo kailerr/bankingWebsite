@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NOIR CAPITAL BANK -- Register</title>
+    <link rel="stylesheet" type="text/css" href="home.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+    
     <style>
       #divChange {
         width: 100px;
@@ -11,7 +22,7 @@
         background-size: contain;
         position: relative;
         animation-name: example;
-        animation-duration: 4s;
+        animation-duration: 2s;
         animation-iteration-count: 1;
       }
 
@@ -36,15 +47,7 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background-color: #060606;
-        background-image: linear-gradient(
-          43deg,
-          #060606 0%,
-          #868484 22%,
-          #3e3c37 49%,
-          #b1afaf 75%,
-          #151313 100%
-        );
+        background: #808080;
       }
 
       .alignment {
@@ -68,36 +71,16 @@
         background-color: black;
       }
 
-      .option {
-        background-color: #e1fcd8;
-        background-image: linear-gradient(
-          43deg,
-          #e1fcd8 0%,
-          #95f595 46%,
-          #93e388 100%
-        );
-        border-color: white;
-      }
-
       #container {
         height: 80%;
         width: 70%;
         max-height: 1000px;
-        max-width: 500px;
+        max-width: 600px;
         background-color: #595f57;
         text-align: center;
         padding: 20px;
         border-radius: 5px;
-        background-color: #101111;
-        background-image: linear-gradient(
-          160deg,
-          #101111 0%,
-          #2d3030 19%,
-          #262829 39%,
-          #95989b 60%,
-          #2b2b2b 80%,
-          #151212 100%
-        );
+        background: linear-gradient(245.59deg, #555 0%, #333 28.53%, #222 75.52%);
       }
 
       @media (max-width: 600px) {
@@ -148,10 +131,10 @@
 
       #securityQuestion {
         height: 31px;
-        width: 355px;
+        width: 350px;
       }
 
-      #passwordField {
+      #password {
         height: 20px;
         width: 350px;
         background-color: #b5bab5;
@@ -163,7 +146,7 @@
         );
       }
 
-      #reEnterPasswordField {
+      #cpassword {
         height: 20px;
         width: 350px;
         background-color: #b5bab5;
@@ -195,17 +178,24 @@
       }
 
       #createProjOP {
-        font-size: 18px;
-        text-align: center;
-        color: lightgray;
-        font-family: "Open Sans", sans-serif;
-        background-color: #000000;
-        background-image: linear-gradient(
-          43deg,
-          #000000 0%,
-          #6d737a 46%,
-          #151313 100%
-        );
+      display: incline-block;
+      color: white;
+      background: #333;
+      border: 1px solid transparent;
+      padding: 12px 30px;
+      line-height: 1.4;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 30px;
+      text-transform:uppercase;
+      transition: all .55s ease;
+      margin-top: 10px;
+      }
+
+      #createProjOP:hover{
+        background: transparent;
+        border: 1px solid white;
+        transform: translateZ(8px);
       }
 
       #emailField {
@@ -250,82 +240,85 @@
       <div id="container">
         <form action="/registrationprocess.php" method="post">
           <label id="titleLabel">User Registration Change</label>
-          <br>
-          <br>
+          <br />
+          <br />
           <label id="emailLabel">Email:</label>
           <br />
           <input
             id="emailField"
             type="text"
-            placeholder="ex: sjsustudent@sjsu.com"
+            placeholder=" ex: sjsustudent@sjsu.com"
             name="email"
+            required
           />
           <br />
           <label id="textLabel">User Name</label>
           <br />
-          <input id="textField" type="text" name="username" />
+          <input id="textField" type="text" name="username" required />
           <br />
           <label id="passwordLabel">Password:</label>
           <br />
           <input
-            id="passwordField"
+            id="password"
             type="password"
-            placeholder="saef453$a.."
+            placeholder=" saef453$a.."
             name="password"
+            required
           />
           <br />
           <label id="reEnterPasswordLabel">Re Enter Password:</label>
           <br />
           <input
-            id="reEnterPasswordField"
+            id="cpassword"
             type="password"
-            placeholder="saef453$a.."
+            placeholder=" saef453$a.."
             name="password2"
+            required
           />
+          <script src="passwordCheck.js"></script>
+
           <br />
           <label id="textLabel">Phone Number</label>
           <br />
-          <input id="textField" type="text" name="phone" />
+          <input id="textField" type="text" name="phone" required />
           <br />
           <label id="textLabel">Current Address</label>
           <br />
-          <input id="textField" type="text" name="address" />
+          <input id="textField" type="text" name="address" required />
           <br />
           <label id="textLabel">Zip Code</label>
           <br />
-          <input id="textField" type="text" name="zipcode" />
+          <input id="textField" type="text" name="zipcode" required />
           <br />
           <label id="textLabel">Residing State</label>
           <br />
-          <input id="textField" type="text" name="state" />
+          <input id="textField" type="text" name="state" required />
           <br />
           <br />
           <select
             id="securityQuestion"
             name="securityquestion"
+            required
             style="
               background-color: #f0f5f5;
               background-image: linear-gradient(
-                90deg,
-                #f0f5f5 0%,
-                #9b9b9b 33%,
-                #746d6d 66%,
-                #aec4c4 100%
-              );
+            45deg,
+            #b5bab5 0%,
+            #f1f1eb 50%,
+            #d3d6d3 100%
+            );
             "
           >
             <option>What is your favorite food?</option>
             <option>What was your first car?</option>
             <option>What is the name of your first pet?</option>
             <option>What is your favorite movie?</option>
-            <option selected style="background-color: white">
-              Choose Security Question
-            </option>
           </select>
           <textarea
             id="securityQuestionTextArea"
             name="securityresponse"
-            placeholder="Enter answer to security question..."
+            placeholder=" Enter answer to security question..."
+            required
           ></textarea>
           <br />
           <button

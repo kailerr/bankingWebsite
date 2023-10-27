@@ -50,7 +50,7 @@ if (!isset($_SESSION['username'])) {
       $sql = "SELECT accountnumber, totalamount FROM bank_users WHERE username = '$username'";
       $result = mysqli_query($conn, $sql);
       if ($row = mysqli_fetch_assoc($result)) {
-      echo $_SESSION['username'] ."'s Checkings Account<br>";
+      echo "<h4>{$_SESSION['username']}'s CHECKINGS ACCOUNT</h4><br>";
       echo "Account Number: " . $row["accountnumber"] . "<br>Balance: $" . $row["totalamount"];
       } else 
       echo "0 results";

@@ -28,6 +28,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 $_SESSION['phonenumber'] = $row['phonenumber'];
                 $_SESSION['debitcard'] = $row['debitcard'];
                 $_SESSION['password1'] = $row['password1'];
+                
             }
         }
         mysqli_close($conn); // close connection
