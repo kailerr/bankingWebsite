@@ -1,2 +1,3 @@
 # bankingWebsite
-This project uses 
+This project uses javascript, php, html, and css
+
