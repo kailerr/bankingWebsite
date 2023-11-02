@@ -152,3 +152,38 @@
     font-weight: 600;
     margin-bottom: 10px;
   }
+
+  .popup{
+    width: 400px;
+    background: #8bbbcd;
+    border-radius: 6px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    
+  }
+
+  .popup img{
+    width: 200px;
+    margin-top: -50px;
+    border-radius: 50%
+    
+  };
+
+  .popup h2{
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+  }
+
+  .open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%,-50%)scale(1);
+  }
