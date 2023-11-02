@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<head>
 <?php
 session_start();
 include_once $_SERVER['DOCUMENT_ROOT']. '/conn.php';
@@ -8,8 +11,6 @@ if (!isset($_SESSION['username'])) {
   exit();
 }
 ?>
-<html>
-<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NOIR CAPITAL BANK - Dashboard</title>
@@ -50,7 +51,7 @@ if (!isset($_SESSION['username'])) {
       $sql = "SELECT accountnumber, totalamount FROM bank_users WHERE username = '$username'";
       $result = mysqli_query($conn, $sql);
       if ($row = mysqli_fetch_assoc($result)) {
-      echo "<h4>{$_SESSION['username']}'s CHECKINGS ACCOUNT</h4><br>";
+      echo "<h4>{$_SESSION['username']}'s ACCOUNT</h4>";
       echo "Account Number: " . $row["accountnumber"] . "<br>Balance: $" . $row["totalamount"];
       } else 
       echo "0 results";
@@ -87,13 +88,13 @@ if (!isset($_SESSION['username'])) {
 
     </div>
 
-    </div>
+  
     <div class="bank-text-dashboard">
       <br>
       <br>
       <br>
       <br>
-      <a href="#" href="manageAccounts.html"> Manage Accounts </a>
+      <a href="accounts.php"> Manage Accounts </a>
       <br>
       <br>
       <a href="#" href="checkDeposit.html">Electronic Check Deposit</a>
@@ -108,7 +109,6 @@ if (!isset($_SESSION['username'])) {
   <div class="icons">
 
   </div>
-
   <script src="https://unpkg.com/scrollreveal"></script>
 
   <script src="home.js"></script>

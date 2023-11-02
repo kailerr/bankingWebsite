@@ -1,4 +1,71 @@
-*{
+<?php
+$localhost = 'localhost';
+$username = 'root';
+$password  = '';
+$database_name  = 'bankregistration';
+
+$conn = mysqli_connect($localhost, $username, $password, $database_name);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Handle account creation
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['createChecking'])) {
+        createCheckingAccount($_POST['user_id']);
+    } elseif (isset($_POST['createSavings'])) {
+        createSavingsAccount($_POST['user_id']);
+    } elseif (isset($_POST['deleteChecking'])) {
+        deleteChecking($_POST['account_id']);
+    } elseif (isset($_POST['deleteSavings'])) {
+      deleteSavings($_POST['account_id']);
+  }
+}
+
+// Function to create a checking account
+function createCheckingAccount($user_id) {
+    global $conn;
+    $query = "INSERT INTO checking_accounts (user_id) VALUES ('$user_id')";
+    mysqli_query($conn, $query);
+}
+
+// Function to create a savings account
+function createSavingsAccount($user_id) {
+    global $conn;
+    $query = "INSERT INTO savings_accounts (user_id) VALUES ('$user_id')";
+    mysqli_query($conn, $query);
+}
+
+// Function to delete an account
+function deleteChecking($account_id) {
+    global $conn;
+    $query = "DELETE FROM checking_accounts WHERE account_id = '$account_id'";
+    mysqli_query($conn, $query);
+}
+// Function to delete a savings account
+function deleteSavings($account_id) {
+  global $conn;
+  $query = "DELETE FROM savings_accounts WHERE account_id = '$account_id'";
+  mysqli_query($conn, $query);
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account Management</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+    *{
     padding:0;
     margin: 0;
     box-sizing:border-box;
@@ -72,6 +139,7 @@ section{
     line-height:1;
     color:white;
     margin: 0 0 45px;
+    margin-top: 100px;
 }
 .bank-text h4{
     font-size: 18px;
@@ -154,7 +222,7 @@ section{
 .bank-login form {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    max-width: 300px;
     margin-top: -10px;
     color: white;
     background-color: #808080;
@@ -383,6 +451,7 @@ footer {
     border-collapse: collapse;
     width: 100%;
     color: white;
+    margin-bottom: 20px;
 }
 
 th, td {
@@ -434,3 +503,97 @@ h2 {
     max-width: 300px;
     margin-left:120px;
   }
+
+    </style>
+  </head>
+
+<body>
+<header>
+    <a href "#" class="logo">NOIR CAPITAL BANK</a>
+
+    <ul class="navlist">
+      <li><a href="homepage.html">Home</a></li>
+      <li><a href="dashboard.php">Dashboard</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="bx bx-menu" id="menu-icon"></div>
+  </header>
+  <section class="bank">
+    <div class="bank-text">
+    <h1>Account Management</h1>
+    <div class="bank-login">
+    <h2>Existing Accounts</h2>
+              <table>
+                  <thead>
+                      <tr>
+                          <th>Account Type</th>
+                          <th>Account Number</th>
+                          <th>Balance</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+            <?php
+            // Fetch and display checking accounts
+            $result = mysqli_query($conn, "SELECT * FROM checking_accounts");
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>Checking</td>";
+                echo "<td>{$row['user_id']}</td>";
+                echo "<td>{$row['balance']}</td>";
+                echo "<td>
+                  <form method='post' action='' class='custom-delete-button'>
+                    <input type='hidden' name='account_id' value='{$row['account_id']}'>
+                    <button type='submit' name='deleteChecking'>
+                    <span>Delete</span>
+                    </button>
+                  </form>
+                </td>";
+                echo "</tr>";
+            }
+
+            // Fetch and display savings accounts
+            $result = mysqli_query($conn, "SELECT * FROM savings_accounts");
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>Savings</td>";
+                echo "<td>{$row['user_id']}</td>";
+                echo "<td>{$row['balance']}</td>";
+                echo "<td>
+                  <form method='post' action=''>
+                    <input type='hidden' name='account_id' value='{$row['account_id']}'>
+                    <button type='submit' name='deleteSavings' class='custom-delete-button'>
+                    <span>Delete</span>
+                    </button>
+                  </form>
+                </td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+              </table>
+      </div>
+      </div>
+      <div class="bank-text-dashboard">
+       <!-- Form for creating a checking account -->
+    <form action="" method="post">
+        <label for="user_id">Confirm Account Number:</label>
+        <input type="text" name="user_id" required>
+        <button type="submit" name="createChecking">Create Checking Account</button>
+    </form>
+    
+    <!-- Form for creating a savings account -->
+    <form action="" method="post">
+        <label for="user_id">Confirm Account Number:</label>
+        <input type="text" name="user_id" required>
+        <button type="submit" name="createSavings">Create Savings Account</button>
+    </form>
+      </div>
+  </section>
+<footer>
+&copy; 2023 NOIR CAPITAL BANK. All rights reserved.
+</footer>
+</body>
+
+</html>

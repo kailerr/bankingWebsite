@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<head>
 <?php
 $logged_in = false;
 $userExist = false;
@@ -36,9 +39,6 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 }
 
 ?>
-<html>
-
-<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
