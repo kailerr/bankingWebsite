@@ -40,70 +40,71 @@ if (!isset($_SESSION['username'])) {
     </ul>
     <div class="bx bx-menu" id="menu-icon"></div>
   </header>
+
   <section class="bank">
-    <div class="bank-text">
-      <h4>Welcome <?php  echo $_SESSION['username'];?>! Let's Manage Your Finances, Together.</h4>
-      <p>Accounts Overview</p>
+        <div class="bank-text">
+          <h4>Welcome <?php  echo $_SESSION['username'];?>! Let's Manage Your Finances, Together.</h4>
+          <p>Accounts Overview</p>
       
-    <div class="bank-account">
-      <?php
-      $username = $_SESSION['username'];
-      $sql = "SELECT accountnumber, totalamount FROM bank_users WHERE username = '$username'";
-      $result = mysqli_query($conn, $sql);
-      if ($row = mysqli_fetch_assoc($result)) {
-      echo "<h4>{$_SESSION['username']}'s ACCOUNT</h4>";
-      echo "Account Number: " . $row["accountnumber"] . "<br>Balance: $" . $row["totalamount"];
-      } else 
-      echo "0 results";
-      ?>
-    </div>
+          <div class="bank-account">
+                    <?php
+                    $username = $_SESSION['username'];
+                    $sql = "SELECT accountnumber, totalamount FROM bank_users WHERE username = '$username'";
+                    $result = mysqli_query($conn, $sql);
+                    if ($row = mysqli_fetch_assoc($result)) {
+                    echo "<h4>{$_SESSION['username']}'s ACCOUNT</h4>";
+                    echo "Account Number: " . $row["accountnumber"] . "<br>Balance: $" . $row["totalamount"];
+                    } else 
+                    echo "0 results";
+                    ?>
+          </div>
 
-    <div class="container">
-        <div class="left_side">
-              <h4>PERSONAL INFO</h4>
-              <?php
-      $username = $_SESSION['username'];
-      $sql = "SELECT email, phonenumber, address FROM bank_users WHERE username = '$username'";
-      $result = mysqli_query($conn, $sql);
-      if ($row = mysqli_fetch_assoc($result)) {
-      echo "Email: " . $row["email"] . "<br>Phone Number: " . $row["phonenumber"] . "<br>Address: " . $row["address"];
-      } else {
-      echo "0 results";
-      }?>
-    </div>
+          <div class="container">
+                <div class="left_side">
+                    <h4>PERSONAL INFO</h4>
+                    <?php
+                    $username = $_SESSION['username'];
+                    $sql = "SELECT email, phonenumber, address FROM bank_users WHERE username = '$username'";
+                    $result = mysqli_query($conn, $sql);
+                    if ($row = mysqli_fetch_assoc($result)) {
+                    echo "Email: " . $row["email"] . "<br>Phone Number: " . $row["phonenumber"] . "<br>Address: " . $row["address"];
+                    } else {
+                    echo "0 results";
+                    }?>
+                </div>
+            
+                <div class="right_side">
+                    <h4>CARD INFO</h4>
+                    <?php
+                    $username = $_SESSION['username'];
+                    $sql = "SELECT debitcard, password1 FROM bank_users WHERE username = '$username'";
+                    $result = mysqli_query($conn, $sql);
+                    if ($row = mysqli_fetch_assoc($result)) {
+                    echo "Debit Card #: " . $row["debitcard"] . "<br>Password: " . $row["password1"];
+                    } else {
+                    echo "0 results";
+                    }
+                    ?>
+                </div>
+          </div>
+      </div>
 
-    <div class="right_side">
-              <h4>CARD INFO</h4>
-              <?php
-      $username = $_SESSION['username'];
-      $sql = "SELECT debitcard, password1 FROM bank_users WHERE username = '$username'";
-      $result = mysqli_query($conn, $sql);
-      if ($row = mysqli_fetch_assoc($result)) {
-      echo "Debit Card #: " . $row["debitcard"] . "<br>Password: " . $row["password1"];
-      } else {
-      echo "0 results";
-      }
-      ?>
-    </div>
+        <div class="bank-text-dashboard">
+          <br>
+          <br>
+          <br>
+          <br>
+          <a href="accounts.php"> Manage Accounts </a>
+          <br>
+          <br>
+          <a href="deposit.php">Electronic Check Deposit</a>
+          <br>
+          <br>
+          <a href="#" href="fundTransfer.html"> Fund Transfers </a>
+          <br>
+          <br>
+        </div>
 
-    </div>
-
-  
-    <div class="bank-text-dashboard">
-      <br>
-      <br>
-      <br>
-      <br>
-      <a href="accounts.php"> Manage Accounts </a>
-      <br>
-      <br>
-      <a href="#" href="checkDeposit.html">Electronic Check Deposit</a>
-      <br>
-      <br>
-      <a href="#" href="fundTransfer.html"> Fund Transfers </a>
-      <br>
-      <br>
-    </div>
   </section>
 
   <div class="icons">
