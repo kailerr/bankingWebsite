@@ -12,6 +12,7 @@ if (!$conn) {
 // Handle deposit
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deposit'])) {
     $account_id = $_POST['account_id'];
+    $account_type = $_POST['account_type'];
     $amount = $_POST['amount'];
 
     // Check if the account exists in either checking or savings
@@ -30,45 +31,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deposit'])) {
             $image1FileType = pathinfo($image1, PATHINFO_EXTENSION);
             $image2FileType = pathinfo($image2, PATHINFO_EXTENSION);
 
-            if ($image1FileType == 'jpg' && $image2FileType == 'jpg') {
+            if ($image1FileType == 'jpeg' && $image2FileType == 'jpeg') {
                 // Process deposit
-                deposit($account_id, $amount);
-                echo "Deposit successful.";
+                echo '';
             } else {
-                echo "Please upload two JPG images.";
+                echo '';
             }
         } else {
-            echo "Please upload two images.";
+            echo '';
         }
     } else {
-        echo "Account not found.";
+        echo '';
     }
 }
 
 // Function to deposit funds
-function deposit($account_id, $amount) {
+function deposit($account_id, $amount, $account_type) {
     global $conn;
 
-    // Check if the account is in checking or savings and update accordingly
-    $checkingRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM checking_accounts WHERE account_id = '$account_id'"));
-    $savingsRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM savings_accounts WHERE account_id = '$account_id'"));
-
-    if ($checkingRow) {
-        $query = "UPDATE checking_accounts SET balance = balance + $amount WHERE account_id = '$account_id'";
-    } elseif ($savingsRow) {
-        $query = "UPDATE savings_accounts SET balance = balance + $amount WHERE account_id = '$account_id'";
-    }
-
+    // Update the balance based on the account type
+    $table = ($account_type == 'checking') ? 'checking_accounts' : 'savings_accounts';
+    $query = "UPDATE $table SET balance = balance + $amount WHERE account_id = '$account_id'";
+    
     mysqli_query($conn, $query);
 }
 ?>
+
+<!-- Rest of your HTML code remains the same -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOIR CAPITAL BANK - Deposit Funds</title>
+    <title>NOIR - Deposit </title>
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,7 +76,7 @@ function deposit($account_id, $amount) {
     <style>
         
         .container {
-            min-width: 750px;
+            max-width: 750px;
             margin: 50px auto;
             background-color: #808080;
             padding: 20px;
@@ -86,6 +84,7 @@ function deposit($account_id, $amount) {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             color: white;
             text-align: center;
+            text-transform: uppercase;
         }
 
         h2 {
@@ -108,17 +107,21 @@ function deposit($account_id, $amount) {
         }
 
         button {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
+            justify-content: center;
+            min-width:200px;
+            color: white;
+            transition: all .55s ease;
+            background: #555;
+            border-radius: 8px;
+            text-transform: uppercase;
+            border:1px white;
+            height: 20px;
         }
 
         button:hover {
-            background-color: #45a049;
+            background: #3cb043;
+            border: 1px solid white;
+            transform: translateY(-2px);
         }
 
         .message {
@@ -372,7 +375,7 @@ section{
         transition: .2s;
     }
     .bank-text{
-        padding-top: 115px;
+        padding-top: 0px;
     }
     .bank-img{
         text-align: center;
@@ -514,18 +517,8 @@ form{
     text-align:center;
     font-size: 13px;
 }
-form button:hover{
-    background: transparent;
-    border: 1px solid white;
-    transform: translateX(8px);
-}
-.bank-text-dashboard form button{
-    justify-content: center;
-    min-width:200px;
-    color: white;
-    transition: all .55s ease;
-    background: #808080
-}
+
+
 .bank-text-dashboard{
     margin-top: 280px;
 }
@@ -541,49 +534,82 @@ form button:hover{
 <header>
  <a href "#" class="logo">NOIR CAPITAL BANK</a>
     <ul class="navlist">
-      <li><a href="homepage.html">Home</a></li>
-      <li><a href="dashboard.php">Dashboard</a></li>
-      <li><a href="contact.html">Contact</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
+        <li><a href="contact.html">Contact</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="logout.php">Logout</a></li>
     </ul>
     <div class="bx bx-menu" id="menu-icon"></div>
 </header>
-<div class="bank">
+<section class="bank">
+    <div class="bank-text">
     <div class="container">
         <h2>Deposit Funds</h2>
         <form action="deposit.php" method="post" enctype="multipart/form-data">
-            <label for="account_id">Account Number:</label>
-            <input type="text" name="account_id" required>
+        <label for="account_id">Account Number:</label>
+        <input type="text" name="account_id" required>
 
-            <label for="amount">Amount In $:</label>
-            <input type="number" name="amount" required>
+        <label for="amount">Amount In $:</label>
+        <input type="number" name="amount" required>
 
-            <label for="image1">Front Of Check:</label>
-            <input type="file" name="image1" accept="image/jpeg" required>
+        <label for="account_type">Account Type:</label>
+        <select name="account_type" required>
+            <option value="checking">Checking</option>
+            <option value="savings">Savings</option>
+        </select>
+        <br>
+        <br>
 
-            <label for="image2">Back Of Check:</label>
-            <input type="file" name="image2" accept="image/jpeg" required>
+        <label for="image1">Front Of Check:</label>
+        <input type="file" name="image1" accept="image/jpeg" required>
 
-            <button type="submit" name="deposit">Deposit</button>
-        </form>
+        <label for="image2">Back Of Check:</label>
+        <input type="file" name="image2" accept="image/jpeg" required>
+
+        <button type="submit" name="deposit">Deposit</button>
+    </form>
+
 
         <?php
         // Display success or error message
         if (isset($_POST['deposit'])) {
+            $checkingResult = mysqli_query($conn, "SELECT * FROM checking_accounts WHERE account_id = '$account_id'");
+            $savingsResult = mysqli_query($conn, "SELECT * FROM savings_accounts WHERE account_id = '$account_id'");
+            
+            $checkingRow = mysqli_fetch_assoc($checkingResult);
+            $savingsRow = mysqli_fetch_assoc($savingsResult);
+        
             if ($checkingRow || $savingsRow) {
-                echo '<div class="message success">Deposit successful.</div>';
+                // Check if two images (jpg) are submitted
+                if (isset($_FILES['image1']['name']) && isset($_FILES['image2']['name'])) {
+                    $image1 = $_FILES['image1']['name'];
+                    $image2 = $_FILES['image2']['name'];
+        
+                    $image1FileType = pathinfo($image1, PATHINFO_EXTENSION);
+                    $image2FileType = pathinfo($image2, PATHINFO_EXTENSION);
+        
+                    if ($image1FileType == 'jpeg' && $image2FileType == 'jpeg') {
+                        // Process deposit
+                        deposit($account_id, $amount, $account_type);
+                        echo '<div class="message success">Deposit successful.</div>';
+                    } else {
+                        echo '<div class="message error">Please upload valid JPG images.</div>';
+                    }
+                } else {
+                    echo '<div class="message error">Please upload both front and back images of the check.</div>';
+                }
             } else {
                 echo '<div class="message error">Account not found.</div>';
             }
         }
         ?>
-
     </div>
- </div>
-</body>
+    </div>
+</section>
 <script src="https://unpkg.com/scrollreveal"></script>
 <script src="home.js"></script>
 <footer>
 &copy; 2023 NOIR CAPITAL BANK. All rights reserved.
 </footer>
+</body>
 </html>

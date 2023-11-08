@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
 ?>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NOIR CAPITAL BANK - Dashboard</title>
+  <title>NOIR - Dashboard</title>
 
   <link rel="stylesheet" type="text/css" href="home.css">
 
@@ -33,10 +33,10 @@ if (!isset($_SESSION['username'])) {
     <a href "#" class="logo">NOIR CAPITAL BANK</a>
 
     <ul class="navlist">
-      <li><a href="homepage.html">Home</a></li>
       <li><a href="dashboard.php">Dashboard</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="logout.php">Logout</a></li>
     </ul>
     <div class="bx bx-menu" id="menu-icon"></div>
   </header>
@@ -49,11 +49,11 @@ if (!isset($_SESSION['username'])) {
           <div class="bank-account">
                     <?php
                     $username = $_SESSION['username'];
-                    $sql = "SELECT accountnumber, totalamount FROM bank_users WHERE username = '$username'";
+                    $sql = "SELECT user_id, totalamount FROM bank_users WHERE username = '$username'";
                     $result = mysqli_query($conn, $sql);
                     if ($row = mysqli_fetch_assoc($result)) {
                     echo "<h4>{$_SESSION['username']}'s ACCOUNT</h4>";
-                    echo "Account Number: " . $row["accountnumber"] . "<br>Balance: $" . $row["totalamount"];
+                    echo "Account Number: " . $row["user_id"] . "<br>Balance: $" . $row["totalamount"];
                     } else 
                     echo "0 results";
                     ?>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['username'])) {
           <a href="deposit.php">Electronic Check Deposit</a>
           <br>
           <br>
-          <a href="#" href="fundTransfer.html"> Fund Transfers </a>
+          <a href="transfer.php"> Fund Transfers </a>
           <br>
           <br>
         </div>

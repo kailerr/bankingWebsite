@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 <?php
-session_start();
-include_once $_SERVER['DOCUMENT_ROOT']. '/conn.php';
-// Check if the user is logged in
-if (!isset($_SESSION['username'])) {
-  // Redirect to the login page if not logged in
-  header("Location: login.php");
-  exit();
-}
 $localhost = 'localhost';
 $username = 'root';
 $password  = '';
@@ -20,59 +9,110 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Handle account creation
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['createChecking'])) {
-        createCheckingAccount($_POST['user_id']);
-    } elseif (isset($_POST['createSavings'])) {
-        createSavingsAccount($_POST['user_id']);
-    } elseif (isset($_POST['deleteChecking'])) {
-        deleteChecking($_POST['account_id']);
-    } elseif (isset($_POST['deleteSavings'])) {
-      deleteSavings($_POST['account_id']);
-  }
+// Handle fund transfer
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['transfer'])) {
+  $source_user_id = $_POST['source_user_id'];
+  $source_account_id = $_POST['source_account_id'];
+  $destination_user_id = $_POST['destination_user_id'];
+  $destination_account_id = $_POST['destination_account_id'];
+  $amount = $_POST['amount'];
+  $account_type = $_POST['account_type']; // Added account_type
 }
 
-// Function to create a checking account
-function createCheckingAccount($user_id) {
-    global $conn;
-    $query = "INSERT INTO checking_accounts (user_id) VALUES ('$user_id')";
-    mysqli_query($conn, $query);
-}
-
-// Function to create a savings account
-function createSavingsAccount($user_id) {
-    global $conn;
-    $query = "INSERT INTO savings_accounts (user_id) VALUES ('$user_id')";
-    mysqli_query($conn, $query);
-}
-
-// Function to delete an account
-function deleteChecking($account_id) {
-    global $conn;
-    $query = "DELETE FROM checking_accounts WHERE account_id = '$account_id'";
-    mysqli_query($conn, $query);
-}
-// Function to delete a savings account
-function deleteSavings($account_id) {
+// Function to transfer funds
+function transferFunds($source_user_id, $source_account_id, $destination_user_id, $destination_account_id, $amount, $account_type) {
   global $conn;
-  $query = "DELETE FROM savings_accounts WHERE account_id = '$account_id'";
-  mysqli_query($conn, $query);
+
+  // Deduct funds from the source account
+  $queryDeduct = "UPDATE $account_type SET balance = balance - $amount WHERE user_id = '$source_user_id' AND account_id = '$source_account_id'";
+  mysqli_query($conn, $queryDeduct);
+
+  // Add funds to the destination account
+  $queryAdd = "UPDATE $account_type SET balance = balance + $amount WHERE user_id = '$destination_user_id' AND account_id = '$destination_account_id'";
+  mysqli_query($conn, $queryAdd);
 }
-
 ?>
-    <meta charset="UTF-8">
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bank Account Management</title>
+    <title>NOIR CAPITAL BANK - Deposit Funds</title>
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+    
     <style>
-    *{
+        
+        .container {
+            max-width: 750px;
+            margin: 50px auto;
+            background-color: #808080;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: white;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            justify-content: center;
+            min-width:200px;
+            color: white;
+            transition: all .55s ease;
+            background: #555;
+            border-radius: 8px;
+            text-transform: uppercase;
+            border:1px white;
+            height: 30px;
+        }
+
+        button:hover {
+            background: #3cb043;
+            border: 1px solid white;
+            transform: translateY(-2px);
+        }
+
+        .message {
+            padding: 10px;
+            text-transform:uppercase;
+        }
+
+        .success {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .error {
+            background-color: #f44336;
+            color: #fff;
+        }
+        *{
     padding:0;
     margin: 0;
     box-sizing:border-box;
@@ -81,7 +121,7 @@ function deleteSavings($account_id) {
     text-decoration: none;
 }
 header{
-    position:fixed;
+    position:relative;
     right: 0;
     top: 0;
     z-index:1000;
@@ -126,7 +166,7 @@ header{
     background: linear-gradient(245.59deg, #555 0%, #333 28.53%, #222 75.52%);
     position:relative;
     display:grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(1,1fr);
     align-items:center;
     gap: 2rem;
 }
@@ -149,7 +189,7 @@ section{
     margin-top: 100px;
 }
 .bank-text h4{
-    font-size: 18px;
+    font-size: 35px;
     font-weight: 600;
     color: white;
     margin-bottom: 10px;
@@ -256,6 +296,7 @@ section{
     cursor: pointer;
     margin-top: 20px;
     margin-bottom:-40px;
+    transition: all .55s ease;
     margin-left: 10px;
   }
   
@@ -307,7 +348,7 @@ section{
         transition: .2s;
     }
     .bank-text{
-        padding-top: 115px;
+        padding-top: 0px;
     }
     .bank-img{
         text-align: center;
@@ -395,39 +436,7 @@ section{
     margin-bottom: 0px;
     margin-top: -10px;
 }
-.container
-{
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    width: 600px;
-    position:relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.container .left_side
-{
-    position:relative;
-    padding: 10px;
-    color: white;
-    background-color: #808080;
-    width: 275px;
-    height: 150px;
-    border-radius: 8px;
-    margin-left: -20px;
-}
-.container .right_side
-{
-    position:relative;
-    padding: 10px;
-    color: white;
-    background-color: #808080;
-    width: 300px;
-    height: 150px;
-    border-radius: 8px;
-    margin-left: 25px;
-}
+
 .bank-text-dashboard a{
     color: white;
     background: #808080;
@@ -481,18 +490,8 @@ form{
     text-align:center;
     font-size: 13px;
 }
-form button:hover{
-    background: transparent;
-    border: 1px solid white;
-    transform: translateX(8px);
-}
-.bank-text-dashboard form button{
-    justify-content: center;
-    min-width:200px;
-    color: white;
-    transition: all .55s ease;
-    background: #808080
-}
+
+
 .bank-text-dashboard{
     margin-top: 280px;
 }
@@ -502,105 +501,73 @@ form button:hover{
     transform: translateY(-2px);
 }
 
-
-
     </style>
-  </head>
+</head>
 
 <body>
-<header>
+    <header>
     <a href "#" class="logo">NOIR CAPITAL BANK</a>
-
-    <ul class="navlist">
+        <ul class="navlist">
         <li><a href="dashboard.php">Dashboard</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="logout.php">Logout</a></li>
-    </ul>
-    <div class="bx bx-menu" id="menu-icon"></div>
-  </header>
-  <section class="bank">
-    <div class="bank-text">
-    <h1>Account Management</h1>
-    <div class="bank-login">
-    <?php echo "<h2>{$_SESSION['username']}'s Existing Accounts</h2>";?>
-              <table>
-                  <thead>
-                      <tr>
-                          <th>Account Type</th>
-                          <th>Account Number</th>
-                          <th>User Number</th>
-                          <th>Balance</th>
-                          <th>Action</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-            <?php
-            $user_id = $_SESSION['user_id'];
-            // Fetch and display checking accounts
-            $result = mysqli_query($conn,"SELECT account_id, user_id, balance FROM checking_accounts WHERE user_id = '$user_id'");
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>Checking</td>";
-                echo "<td>{$row['account_id']}</td>";
-                echo "<td>{$row['user_id']}</td>";
-                echo "<td>{$row['balance']}</td>";
-                echo "<td>
-                  <form method='post' action='' class='bank-text-dashboard'>
-                    <input type='hidden' name='account_id' value='{$row['account_id']}'>
-                    <button type='submit' name='deleteChecking' class='bank-text-dashboard'>
-                    <span>Delete</span>
-                    </button>
-                  </form>
-                </td>";
-                echo "</tr>";
-            }
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="logout.php">Logout</a></li>
+        </ul>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+<section class="bank">
+  <div class="bank-text">
+    <div class="container">
+    <form action="transfer.php" method="post">
+        <label for="source_user_id">Source User ID:</label>
+        <input type="text" name="source_user_id" required>
 
-            // Fetch and display savings accounts
-            $result = mysqli_query($conn, "SELECT account_id, user_id, balance FROM savings_accounts WHERE user_id = '$user_id'");
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>Savings</td>";
-                echo "<td>{$row['account_id']}</td>";
-                echo "<td>{$row['user_id']}</td>";
-                echo "<td>{$row['balance']}</td>";
-                echo "<td>
-                  <form method='post' action='' class='bank-text-dashboard'>
-                    <input type='hidden' name='account_id' value='{$row['account_id']}'>
-                    <button type='submit' name='deleteSavings' class='bank-text-dashboard'>
-                    <span>Delete</span>
-                    </button>
-                  </form>
-                </td>";
-                echo "</tr>";
-            }
-            ?>
-        </tbody>
-              </table>
-      </div>
-      </div>
-    <div class="bank-text-dashboard">
-       <!-- Form for creating a checking account -->
-    <form action="" method="post">
-        <label for="user_id">Confirm User Number:</label>
-        <input type="text" name="user_id" required>
-        <button type="submit" name="createChecking">Create Checking Account</button>
-    </form>
-    
-    <!-- Form for creating a savings account -->
-    <form action="" method="post">
-        <label for="user_id">Confirm User Number:</label>
-        <input type="text" name="user_id" required>
-        <button type="submit" name="createSavings">Create Savings Account</button>
-    </form>
-      </div>
-  </section>
-  <script src="https://unpkg.com/scrollreveal"></script>
+        <label for="source_account_id">Source Account ID:</label>
+        <input type="text" name="source_account_id" required>
 
+        <label for="destination_user_id">Destination User ID:</label>
+        <input type="text" name="destination_user_id" required>
+
+        <label for="destination_account_id">Destination Account ID:</label>
+        <input type="text" name="destination_account_id" required>
+
+        <label for="account_type">Account Type:</label>
+        <select name="account_type" required>
+            <option value="checking_accounts">Checking</option>
+            <option value="savings_accounts">Savings</option>
+        </select>
+        <br>
+        <br>
+
+        <label for="amount">Amount In $:</label>
+        <input type="number" name="amount" required>
+
+        <button type="submit" name="transfer">Transfer Funds</button>
+    </form>
+    <br>
+   <?php // Check if the source and destination accounts exist
+    $sourceAccountResult = mysqli_query($conn, "SELECT * FROM $account_type WHERE user_id = '$source_user_id' AND account_id = '$source_account_id'");
+    $destinationAccountResult = mysqli_query($conn, "SELECT * FROM $account_type WHERE user_id = '$destination_user_id' AND account_id = '$destination_account_id'");
+
+  
+  $sourceAccountRow = mysqli_fetch_assoc($sourceAccountResult);
+  $destinationAccountRow = mysqli_fetch_assoc($destinationAccountResult);
+
+  if ($sourceAccountRow && $destinationAccountRow) {
+      // Process fund transfer
+      transferFunds($source_user_id, $source_account_id, $destination_user_id, $destination_account_id, $amount, $account_type);
+      echo '<div class="message success">Funds transfer successful.</div>';
+  } else {
+      echo '<div class="message error">Invalid source or destination account.</div>';
+  }
+  ?>
+    </div>
+  </div>
+</section>
+<script src="https://unpkg.com/scrollreveal"></script>
 <script src="home.js"></script>
 <footer>
 &copy; 2023 NOIR CAPITAL BANK. All rights reserved.
 </footer>
 </body>
-
 </html>
