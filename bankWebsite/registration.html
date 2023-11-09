@@ -59,27 +59,6 @@
         background: #808080;
       }
 
-      .alignment {
-        display: flex;
-        flex-direction: row;
-      }
-
-      .alignment input {
-        left: 50px;
-        margin-top: 5px;
-        width: 3%;
-        padding-left: 10px;
-      }
-
-      .alignment label {
-        width: 100%;
-        padding: 5px;
-      }
-
-      .labelColor {
-        background-color: black;
-      }
-
       #container {
         height: 80%;
         width: 70%;
@@ -103,21 +82,9 @@
         }
       }
 
-      .registerButton:hover {
-        background-color: #629c44;
-        transition: 0.5s;
-      }
-
-      .registerButton:focus {
-        outline-color: transparent;
-        outline-style: solid;
-        box-shadow: 0 0 0 2px gray;
-        transition: 0.5s;
-      }
-
       #titleLabel {
         font-weight: bold;
-        font-size: 28px;
+        font-size: 32px;
         color: white;
       }
 
@@ -125,76 +92,6 @@
         font-size: 18px;
         font-weight: bold;
         color: white;
-      }
-
-      #securityQuestion {
-        height: 31px;
-        width: 350px;
-        margin-right: 0px;
-      }
-
-      #password {
-        height: 20px;
-        width: 350px;
-        background-color: #b5bab5;
-        background-image: linear-gradient(
-          45deg,
-          #b5bab5 0%,
-          #f1f1eb 50%,
-          #d3d6d3 100%
-        );
-      }
-
-      #cpassword {
-        height: 20px;
-        width: 350px;
-        background-color: #b5bab5;
-        background-image: linear-gradient(
-          45deg,
-          #b5bab5 0%,
-          #f1f1eb 50%,
-          #d3d6d3 100%
-        );
-      }
-
-      #securityQuestionLabel {
-        font-weight: bold;
-        font-size: 12px;
-        color: white;
-      }
-
-      #securityQuestionTextArea {
-        resize: none;
-        height: 89px;
-        width: 350px;
-        background-color: #b5bab5;
-        background-image: linear-gradient(
-          45deg,
-          #b5bab5 0%,
-          #f1f1eb 50%,
-          #d3d6d3 100%
-        );
-      }
-
-      #createProjOP {
-        display: incline-block;
-        color: white;
-        background: #333;
-        border: 1px solid transparent;
-        padding: 12px 30px;
-        line-height: 1.4;
-        font-size: 14px;
-        font-weight: 500;
-        border-radius: 30px;
-        text-transform: uppercase;
-        transition: all 0.55s ease;
-        margin-top: 10px;
-      }
-
-      #createProjOP:hover {
-        background: transparent;
-        border: 1px solid white;
-        transform: translateZ(8px);
       }
 
       #textLabel {
@@ -214,14 +111,36 @@
           #d3d6d3 100%
         );
       }
+
+      #registerButton {
+        display: incline-block;
+        color: white;
+        background: #333;
+        border: 1px solid transparent;
+        padding: 12px 30px;
+        line-height: 1.4;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 30px;
+        text-transform: uppercase;
+        transition: all 0.55s ease;
+        margin-top: 10px;
+      }
+
+      #registerButton:hover {
+        background: transparent;
+        border: 1px solid white;
+        transform: translateZ(8px);
+      }
     </style>
   </head>
   <center>
     <body>
+      <!-- this is the animation at the top -->
       <div id="divChange"></div>
       <div id="container">
         <form action="/registrationprocess.php" method="post">
-          <label id="titleLabel">User Registration Change</label>
+          <label id="titleLabel">User Registration</label>
           <br />
           <br />
           <label id="boxlabel">Email:</label>
@@ -234,29 +153,33 @@
             required
           />
           <br />
+
           <label id="boxlabel">User Name</label>
           <br />
           <input id="textField" type="text" name="username" required />
           <br />
+
           <label id="boxlabel">Password:</label>
           <br />
           <input
-            id="password"
+            id="textField"
             type="password"
             placeholder=" saef453$a.."
             name="password"
             required
           />
           <br />
+
           <label id="boxlabel">Re Enter Password:</label>
           <br />
           <input
-            id="cpassword"
+            id="textField"
             type="password"
             placeholder=" saef453$a.."
             name="password2"
             required
           />
+
           <script src="passwordCheck.js"></script>
 
           <br />
@@ -276,21 +199,9 @@
           <br />
           <input id="textField" type="text" name="state" required />
           <br />
+          <label id="textLabel">Security Question</label>
           <br />
-          <select
-            id="securityQuestion"
-            name="securityquestion"
-            required
-            style="
-              background-color: #f0f5f5;
-              background-image: linear-gradient(
-                45deg,
-                #b5bab5 0%,
-                #f1f1eb 50%,
-                #d3d6d3 100%
-              );
-            "
-          >
+          <select id="textField" name="securityquestion" required>
             <option>What is your favorite food?</option>
             <option>What was your first car?</option>
             <option>What is the name of your first pet?</option>
@@ -298,18 +209,13 @@
           </select>
 
           <textarea
-            id="securityQuestionTextArea"
+            id="textField"
             name="securityresponse"
             placeholder=" Enter answer to security question..."
             required
           ></textarea>
           <br />
-          <button
-            id="createProjOP"
-            class="registerButton"
-            type="submit"
-            value="Register"
-          >
+          <button id="registerButton" type="submit" value="Register">
             Register
           </button>
         </form>
