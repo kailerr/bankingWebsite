@@ -103,6 +103,7 @@ if (!isset($_SESSION['username'])) {
           <a href="transfer.php"> Fund Transfers </a>
           <br>
           <br>
+          <a href="transactions.html"> See Transactions </a>
         </div>
 
   </section>
