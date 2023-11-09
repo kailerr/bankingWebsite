@@ -25,7 +25,7 @@
     }
 
     #message-container {
-        color: white;
+        color: black;
         height: 80%;
         width: 70%;
         max-height: 1000px;
@@ -70,10 +70,10 @@ if (isset($_POST["email"]) && isset($_POST["username"]) && isset($_POST["passwor
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $accountnumber = rand(100000000000, 999999999999);
+        $user_id = rand(100000000000, 999999999999);
         $debitcard = rand(1000000000000000, 9999999999999999);
         // register user
-        $sql = "INSERT INTO bank_users(`email`, `username`, `password1`, `password2`, `phonenumber`, `address`, `zipcode`, `state`, `securityquestion`, `securityresponse`, `accountnumber`, `totalamount`, `debitcard`) VALUES ('$email','$username','$password','$password2','$phone','$address','$zipcode','$state','$securityquestion','$securityresponse',$accountnumber,0,$debitcard)";
+        $sql = "INSERT INTO bank_users(`email`, `username`, `password1`, `password2`, `phonenumber`, `address`, `zipcode`, `state`, `securityquestion`, `securityresponse`, `user_id`, `totalamount`, `debitcard`) VALUES ('$email','$username','$password','$password2','$phone','$address','$zipcode','$state','$securityquestion','$securityresponse',$user_id,0,$debitcard)";
 
         $results = mysqli_query($conn, $sql);
 

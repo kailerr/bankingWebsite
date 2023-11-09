@@ -106,6 +106,29 @@ if (!isset($_SESSION['username'])) {
           <a href="transactions.html"> See Transactions </a>
         </div>
 
+        <tr>
+          <td>Date</td>
+          <td>Origin</
+          <td>Amount</td>
+        </tr>
+
+        <!-- while ($row = mysqli_fetch_assoc($result)) {
+          echo "<tr>";
+          echo "<td>Checking</td>";
+          echo "<td>{$row['account_id']}</td>";
+          echo "<td>{$row['user_id']}</td>";
+          echo "<td>{$row['balance']}</td>";
+          echo "<td>
+            <form method='post' action='' class='bank-text-dashboard'>
+              <input type='hidden' name='account_id' value='{$row['account_id']}'>
+              <button type='submit' name='deleteChecking' class='bank-text-dashboard'>
+              <span>Delete</span>
+              </button>
+            </form>
+          </td>";
+          echo "</tr>";
+      } -->
+
   </section>
 
   <div class="icons">

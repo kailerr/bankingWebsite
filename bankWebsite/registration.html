@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>NOIR CAPITAL BANK -- Register</title>
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="home.css" />
 
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
 
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
       #divChange {
         width: 100px;
@@ -80,7 +89,12 @@
         text-align: center;
         padding: 20px;
         border-radius: 5px;
-        background: linear-gradient(245.59deg, #555 0%, #333 28.53%, #222 75.52%);
+        background: linear-gradient(
+          245.59deg,
+          #555 0%,
+          #333 28.53%,
+          #222 75.52%
+        );
       }
 
       @media (max-width: 600px) {
@@ -89,41 +103,25 @@
         }
       }
 
-      #nameField {
-        background-color: clear;
-      }
-
-      .my_bttn:hover {
+      .registerButton:hover {
         background-color: #629c44;
         transition: 0.5s;
       }
 
-      .my_bttn:focus {
+      .registerButton:focus {
         outline-color: transparent;
         outline-style: solid;
         box-shadow: 0 0 0 2px gray;
         transition: 0.5s;
       }
 
-      #passwordLabel {
-        font-weight: bold;
-        font-size: 18px;
-        color: white;
-      }
-
-      #reEnterPasswordLabel {
-        font-weight: bold;
-        font-size: 18px;
-        color: white;
-      }
-
       #titleLabel {
         font-weight: bold;
-        font-size: 36px;
+        font-size: 28px;
         color: white;
       }
 
-      #emailLabel {
+      #boxlabel {
         font-size: 18px;
         font-weight: bold;
         color: white;
@@ -179,36 +177,24 @@
       }
 
       #createProjOP {
-      display: incline-block;
-      color: white;
-      background: #333;
-      border: 1px solid transparent;
-      padding: 12px 30px;
-      line-height: 1.4;
-      font-size: 14px;
-      font-weight: 500;
-      border-radius: 30px;
-      text-transform:uppercase;
-      transition: all .55s ease;
-      margin-top: 10px;
+        display: incline-block;
+        color: white;
+        background: #333;
+        border: 1px solid transparent;
+        padding: 12px 30px;
+        line-height: 1.4;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 30px;
+        text-transform: uppercase;
+        transition: all 0.55s ease;
+        margin-top: 10px;
       }
 
-      #createProjOP:hover{
+      #createProjOP:hover {
         background: transparent;
         border: 1px solid white;
         transform: translateZ(8px);
-      }
-
-      #emailField {
-        height: 25px;
-        width: 350px;
-        background-color: #b5bab5;
-        background-image: linear-gradient(
-          45deg,
-          #b5bab5 0%,
-          #f1f1eb 50%,
-          #d3d6d3 100%
-        );
       }
 
       #textLabel {
@@ -228,11 +214,6 @@
           #d3d6d3 100%
         );
       }
-
-      #titleLabel {
-        font-weight: bold;
-        font-size: 24px;
-      }
     </style>
   </head>
   <center>
@@ -243,21 +224,21 @@
           <label id="titleLabel">User Registration Change</label>
           <br />
           <br />
-          <label id="emailLabel">Email:</label>
+          <label id="boxlabel">Email:</label>
           <br />
           <input
-            id="emailField"
+            id="textField"
             type="text"
             placeholder=" ex: sjsustudent@sjsu.com"
             name="email"
             required
           />
           <br />
-          <label id="textLabel">User Name</label>
+          <label id="boxlabel">User Name</label>
           <br />
           <input id="textField" type="text" name="username" required />
           <br />
-          <label id="passwordLabel">Password:</label>
+          <label id="boxlabel">Password:</label>
           <br />
           <input
             id="password"
@@ -267,7 +248,7 @@
             required
           />
           <br />
-          <label id="reEnterPasswordLabel">Re Enter Password:</label>
+          <label id="boxlabel">Re Enter Password:</label>
           <br />
           <input
             id="cpassword"
@@ -303,11 +284,11 @@
             style="
               background-color: #f0f5f5;
               background-image: linear-gradient(
-            45deg,
-            #b5bab5 0%,
-            #f1f1eb 50%,
-            #d3d6d3 100%
-            );
+                45deg,
+                #b5bab5 0%,
+                #f1f1eb 50%,
+                #d3d6d3 100%
+              );
             "
           >
             <option>What is your favorite food?</option>
@@ -315,6 +296,7 @@
             <option>What is the name of your first pet?</option>
             <option>What is your favorite movie?</option>
           </select>
+
           <textarea
             id="securityQuestionTextArea"
             name="securityresponse"
@@ -324,7 +306,7 @@
           <br />
           <button
             id="createProjOP"
-            class="my_bttn"
+            class="registerButton"
             type="submit"
             value="Register"
           >
