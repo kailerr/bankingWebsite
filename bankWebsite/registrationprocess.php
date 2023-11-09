@@ -1,3 +1,18 @@
+<html>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NOIR - Register</title>
+    <link rel="stylesheet" type="text/css" href="home.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+    
+</html>
 <style>
     body {
         margin: 0;
@@ -6,15 +21,7 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        background-color: #060606;
-        background-image: linear-gradient(
-            43deg,
-            #060606 0%,
-            #868484 22%,
-            #3e3c37 49%,
-            #b1afaf 75%,
-            #151313 100%
-        );
+        background: #808080;
     }
 
     #message-container {
@@ -27,16 +34,7 @@
         text-align: center;
         padding: 20px;
         border-radius: 5px;
-        background-color: #101111;
-        background-image: linear-gradient(
-            160deg,
-            #101111 0%,
-            #2d3030 19%,
-            #262829 39%,
-            #95989b 60%,
-            #2b2b2b 80%,
-            #151212 100%
-        );
+        background: linear-gradient(245.59deg, #555 0%, #333 28.53%, #222 75.52%);
     }
 
     @media (max-width: 600px) {
@@ -83,7 +81,7 @@ if (isset($_POST["email"]) && isset($_POST["username"]) && isset($_POST["passwor
         if ($results) {
             echo "<br>";
             echo "<h4>Your Account Has Been Successfully Created!</h4>";
-            echo "<h4>Lets Begin Your Financial Journey!<br><a href='login.php'>Login Here</a></h4>";
+            echo "Lets Begin Your Financial Journey!<br><a href='login.php'>Login Here</a>";
         } else {
             echo mysqli_error($conn);
         }

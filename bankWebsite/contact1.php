@@ -46,11 +46,11 @@ if (isset($_POST["username"]) && isset($_POST["phonenumber"]) && isset($_POST["e
 
 <body>
     <header>
-        <a href "#" class="logo">NOIR2 CAPITAL BANK</a>
+        <a href "#" class="logo">NOIR CAPITAL BANK</a>
 
         <ul class="navlist">
             <li><a href="homepage.html">Home</a></li>
-            <li><a href="login.html">Sign In</a></li>
+            <li><a href="login.php">Sign In</a></li>
             <li><a href="contact1.php">Contact</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
@@ -161,10 +161,6 @@ if (isset($_POST["username"]) && isset($_POST["phonenumber"]) && isset($_POST["e
 
 
         </div>
-
-        <footer class="footer">
-            &copy; 2023 NOIR CAPITAL BANK. All rights reserved.
-        </footer>
         <script src="script.js"></script>
         <script>
             function closePopup() {
@@ -172,6 +168,9 @@ if (isset($_POST["username"]) && isset($_POST["phonenumber"]) && isset($_POST["e
                 popup.classList.remove("open-popup");
             }
         </script>
+        <footer class="footer">
+            &copy; 2023 NOIR CAPITAL BANK. All rights reserved.
+        </footer>
 </body>
 
 </html>

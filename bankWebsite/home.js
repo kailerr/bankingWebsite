@@ -18,6 +18,7 @@ sr.reveal('.bank-img',{delay:450, origin:'top'});
 sr.reveal('.scroll-down',{delay:500, origin:'right'});
 sr.reveal('.bank-login',{delay:200, origin:'top'});
 sr.reveal('.bank-text-dashboard',{delay:200, origin:'top'});
+sr.reveal('.container',{delay:200, origin:'top'});
 
 function openPopOutWindow() {
   var url = 'registration.html';

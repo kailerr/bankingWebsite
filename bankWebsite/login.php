@@ -2,6 +2,8 @@
 <html>
 <head>
 <?php
+include 'conn.php';
+
 $logged_in = false;
 $userExist = false;
 if (isset($_POST["username"]) && isset($_POST["password"])) {
@@ -15,7 +17,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
             die("Connection failed: " . mysqli_connect_error());
         }
         // select users password from there username
-        $sql = "SELECT password1 FROM bank_users WHERE username = '$username'";
+        $sql = "SELECT * FROM bank_users WHERE username = '$username'";
         $results = mysqli_query($conn, $sql);
 
         if ($results) {
@@ -25,12 +27,15 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 $logged_in = true;
                 session_start();
                 $_SESSION['username'] = $username;
-                $_SESSION['accountnumber'] = $row['accountnumber'];
+                $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['totalamount'] = $row['totalamount'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['phonenumber'] = $row['phonenumber'];
                 $_SESSION['debitcard'] = $row['debitcard'];
                 $_SESSION['password1'] = $row['password1'];
+                
+
+
                 
             }
         }
@@ -41,7 +46,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <title>NOIR - Login</title>
 
     <link rel="stylesheet" type="text/css" href="home.css">
 
@@ -62,7 +67,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
         <ul class="navlist">
             <li><a href="homepage.html">Home</a></li>
             <li><a href="login.php">Sign In</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact1.php">Contact</a></li>
             <li><a href="about.html">About</a></li>
         </ul>
         <div class="bx bx-menu" id="menu-icon"></div>

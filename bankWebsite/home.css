@@ -395,42 +395,4 @@ background-color: #808080;
 h2 {
     color: white;
 }  
-.bank-text-dashboard{
-    margin-top: 130px;
-}
-.bank-text-dashboard form {
-    display: flex;
-    flex-direction: column;
-    margin-top: -10px;
-    color: white;
-    position: relative;
-    text-align: center;
-    
-    
-  }
-.bank-text-dashboard form button {
-    display: block;
-    color: white;
-    background: #808080;
-    border: 1px solid transparent;
-    padding: 12px 30px;
-    line-height: 1.4;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 30px;
-    text-transform:uppercase;
-    transition: all .25s ease;
-    margin-left: 120px;
-    max-width: 300px;
-    text-align:center;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
-  .bank-text-dashboard form input {
-    padding: 0.5em;
-    margin-bottom: 1em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    max-width: 300px;
-    margin-left:120px;
-  }
+

@@ -34,7 +34,7 @@ if (!isset($_SESSION['username'])) {
 
     <ul class="navlist">
       <li><a href="dashboard.php">Dashboard</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact1.php">Contact</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="logout.php">Logout</a></li>
     </ul>
