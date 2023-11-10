@@ -46,13 +46,14 @@ if (isset($_POST["username"]) && isset($_POST["phonenumber"]) && isset($_POST["e
 
 <body>
     <header>
-        <a href "#" class="logo">NOIR CAPITAL BANK</a>
+        <a href ="homepage.html" class="logo">NOIR CAPITAL BANK</a>
 
         <ul class="navlist">
             <li><a href="homepage.html">Home</a></li>
             <li><a href="login.php">Sign In</a></li>
             <li><a href="contact1.php">Contact</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="atm.html">ATM</a></li>
         </ul>
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
