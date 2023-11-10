@@ -35,7 +35,7 @@ header{
     border-bottom: 2px solid transparent;
     transition: all .55s ease;
 }
-navlist a:hover{
+.navlist a:hover{
     border-bottom: 2px solid white;
 }
 #menu.icon{
@@ -45,6 +45,7 @@ navlist a:hover{
     cursor: pointer;
     display:none;
 }
+
 .bank{
     height: 100%;
     width: 100%;
@@ -56,6 +57,7 @@ navlist a:hover{
     align-items:center;
     gap: 2rem;
 }
+
 section{
     padding: 0 19%;
     
@@ -396,3 +398,73 @@ h2 {
     color: white;
 }  
 
+.atm-screen {
+    background-color: #6e6e6e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+  }
+  
+  .input-field {
+    margin-bottom: 15px;
+  }
+  
+  input {
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;
+  }
+  
+  button {
+    background-color: #46a349;
+    color: #fff;
+    padding: 10px 20px;
+    border: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 16px;
+    margin-bottom: 5px;
+    transition: 0.5s;
+  }
+  
+  button:hover {
+    background-color: #3b8a3e;
+  }
+
+  .atm{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .atm h2 {
+    font-size: 25px;
+    text-align: center;
+    padding-bottom: 10px;
+    columns: #fff;
+  }
+
+  #back, #cancel {
+    margin: auto;
+    display:block;
+  }
+
+  #back, #cancel, #but {
+    border: 1px solid #808080;
+    background-color: #808080;
+    transition: 0.5s;  
+    margin-bottom: 20px;
+}
+
+  #back:hover, #cancel:hover, #but:hover{
+    background-color: transparent;
+    border: 1px solid white;
+  }
