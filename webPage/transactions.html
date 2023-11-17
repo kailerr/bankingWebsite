@@ -3,11 +3,11 @@
 <head>
 <?php
 session_start();
-include_once $_SERVER['DOCUMENT_ROOT']. '../processingPages/conn.php';
+include_once $_SERVER['DOCUMENT_ROOT']. '/conn.php';
 // Check if the user is logged in
 if (!isset($_SESSION['username'])) {
   // Redirect to the login page if not logged in
-  header("Location: ../webPage/login.php");
+  header("Location: login.php");
   exit();
 }
 ?>
@@ -26,6 +26,25 @@ if (!isset($_SESSION['username'])) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
 
+  <style> 
+  
+  h2 {
+    text-align: center;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    color: white;
+    background-color: #808080;
+    max-height: 20px;
+    text-align: center;
+    justify-content: center;
+    width: 100px; /* Set the default width of each cell */
+    height: 40px; /* Set the default height of each cell */
+}
+  
+  </style>
 </head>
 
 <body>
@@ -43,33 +62,45 @@ if (!isset($_SESSION['username'])) {
 
   <section class="bank">
         <div class="bank-text">
-          <h4>Welcome <?php  echo $_SESSION['username'];?>! Let's Manage Your Finances, Together.</h4>
-          <p>Transactions Overview</p>
+          <h1>Transactions Management</h1>
+          <h2>Previous Transactions</h2>
 
-          <table border="1">
+          <table>
             <tr>
                 <th>Date</th>
-                <th>Origin</th>
+                <th>Source</th>
                 <th>Amount</th>
+                <th>Transaction ID</th>
+                <th>Transaction Type</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             <tr>
                 <td>11-9-23</td>
                 <td>TCGPlayer</td>
                 <td>$20.00</td>
-                <td>Report</td>
+                <td>2312134</td>
+                <td>Payment</td>
+                <td>Pending</td>
+                <td><button>Report</button></td>
             </tr>
             <tr>
                 <td>11-7-23</td>
                 <td>Amazon</td>
                 <td>$30.00</td>
-                <td>Report</td>
+                <td>2312134</td>
+                <td>Sale</td>
+                <td>Pending</td>
+                <td><button>Report</button></td>
             </tr>
             <tr>
-              <td>11-1-23</td>
-              <td>Whole Foods</td>
-              <td>$40.00</td>
-              <td>Report</td>
+                <td>11-1-23</td>
+                <td>Whole Foods</td>
+                <td>$40.00</td>
+                <td>2312134</td>
+                <td>Sale</td>
+                <td>Approved</td>
+                <td><button>Report</button></td>
           </tr>
         </table>
         
