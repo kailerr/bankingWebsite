@@ -82,7 +82,7 @@ $result = mysqli_query($conn, $query);
                                             <td class="customrows"><?php echo $row['id'] ?></td>
                                             <td class="customrows"><?php echo $row['name'] ?></td>
                                             <td class="customrows"><?php echo $row['phone'] ?></td>
-                                            <td class="customrows"><?php echo $row['email'] ?></td>
+                                            <td class="customrows"><a href="mailto:<?php echo $row['email'] ?>"><?php echo $row['email'] ?></a></td>
                                             <td class="customrows"><?php echo $row['message'] ?></td>
                                             <td class="customrows"><?php echo $row['inquiry'] ?></td>
                                     </tr>
