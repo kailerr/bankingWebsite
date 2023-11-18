@@ -15,7 +15,7 @@ if (!isset($_SESSION['username'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NOIR - Dashboard</title>
 
-  <link rel="stylesheet" type="text/css" href="home.css">
+  <link rel="stylesheet" type="text/css" href="../css/home.css">
 
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   
@@ -26,6 +26,25 @@ if (!isset($_SESSION['username'])) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
 
+  <style> 
+  
+  h2 {
+    text-align: center;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    color: white;
+    background-color: #808080;
+    max-height: 20px;
+    text-align: center;
+    justify-content: center;
+    width: 100px; /* Set the default width of each cell */
+    height: 40px; /* Set the default height of each cell */
+}
+  
+  </style>
 </head>
 
 <body>
@@ -33,43 +52,55 @@ if (!isset($_SESSION['username'])) {
     <a href "#" class="logo">NOIR CAPITAL BANK</a>
 
     <ul class="navlist">
-      <li><a href="dashboard.php">Dashboard</a></li>
-      <li><a href="contact1.php">Contact</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="logout.php">Logout</a></li>
+      <li><a href="../webPage/dashboard.php">Dashboard</a></li>
+      <li><a href="../webPage/contact1.php">Contact</a></li>
+      <li><a href="../webPage/about.html">About</a></li>
+      <li><a href="../processingPages/logout.php">Logout</a></li>
     </ul>
     <div class="bx bx-menu" id="menu-icon"></div>
   </header>
 
   <section class="bank">
         <div class="bank-text">
-          <h4>Welcome <?php  echo $_SESSION['username'];?>! Let's Manage Your Finances, Together.</h4>
-          <p>Transactions Overview</p>
+          <h1>Transactions Management</h1>
+          <h2>Previous Transactions</h2>
 
-          <table border="1">
+          <table>
             <tr>
                 <th>Date</th>
-                <th>Origin</th>
+                <th>Source</th>
                 <th>Amount</th>
+                <th>Transaction ID</th>
+                <th>Transaction Type</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             <tr>
                 <td>11-9-23</td>
                 <td>TCGPlayer</td>
                 <td>$20.00</td>
-                <td>Report</td>
+                <td>2312134</td>
+                <td>Payment</td>
+                <td>Pending</td>
+                <td><button>Report</button></td>
             </tr>
             <tr>
                 <td>11-7-23</td>
                 <td>Amazon</td>
                 <td>$30.00</td>
-                <td>Report</td>
+                <td>2312134</td>
+                <td>Sale</td>
+                <td>Pending</td>
+                <td><button>Report</button></td>
             </tr>
             <tr>
-              <td>11-1-23</td>
-              <td>Whole Foods</td>
-              <td>$40.00</td>
-              <td>Report</td>
+                <td>11-1-23</td>
+                <td>Whole Foods</td>
+                <td>$40.00</td>
+                <td>2312134</td>
+                <td>Sale</td>
+                <td>Approved</td>
+                <td><button>Report</button></td>
           </tr>
         </table>
         
@@ -84,7 +115,7 @@ if (!isset($_SESSION['username'])) {
   </div>
   <script src="https://unpkg.com/scrollreveal"></script>
 
-  <script src="home.js"></script>
+  <script src="../js/home.js"></script>
   <footer>
     &copy; 2023 NOIR CAPITAL BANK. All rights reserved.
   </footer>

@@ -2,7 +2,7 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NOIR - Register</title>
-    <link rel="stylesheet" type="text/css" href="home.css">
+    <link rel="stylesheet" type="text/css" href="../css/home.css">
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
@@ -81,7 +81,7 @@ if (isset($_POST["email"]) && isset($_POST["username"]) && isset($_POST["passwor
         if ($results) {
             echo "<br>";
             echo "<h4>Your Account Has Been Successfully Created!</h4>";
-            echo "Lets Begin Your Financial Journey!<br><a href='login.php'>Login Here</a>";
+            echo "Lets Begin Your Financial Journey!<br><a href='../webPage/login.php'>Login Here</a>";
         } else {
             echo mysqli_error($conn);
         }

@@ -1,106 +1,19 @@
-<?php
-// Start the session
-session_start();
-include_once $_SERVER['DOCUMENT_ROOT']. '/conn.php';
-// Check if the user is logged in
-if (!isset($_SESSION['username'])) {
-  // Redirect to the login page if not logged in
-  header("Location: login.php");
-  exit();
-}
-// Destroy the session
-session_destroy();
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOIR - Logout</title>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
-    
-    <style>
-        header{
-        position:relative;
-        right: 0;
-        top: 0;
-        z-index:1000;
-        width :100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 33px 9%;
-        background: #808080;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f1f1f1;
-            text-align: center;
-            background: linear-gradient(245.59deg, #555 0%, #333 28.53%, #222 75.52%);
-        }
-
-        .message {
-            max-width: 750px;
-            margin: 50px auto;
-            background-color: #808080;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: white;
-            text-align: center;
-            text-transform: uppercase;
-        }
-
-        .link {
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .navlist{
-            display:flex;
-        }
-        .navlist a{
-            color: white;
-            margin-left: 60px;
-            font-size:15px;
-            font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: all .55s ease;
-        }
-        .navlist a:hover{
-            border-bottom: 2px solid white;
-        }
-        footer {
-            background-color: #808080;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-            bottom: 0;
-            width: 100%;
-        }
-        *{
-    padding:0;
+* {
+    padding: 0;
     margin: 0;
-    box-sizing:border-box;
+    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    list-style:none;
+    list-style: none;
     text-decoration: none;
 }
-header{
-    position:relative;
+
+header {
+    position: fixed;
     right: 0;
     top: 0;
-    z-index:1000;
-    width :100%;
+    z-index: 1000;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -108,25 +21,56 @@ header{
     background: #808080;
 }
 
-.logo{
-   font-size: 30px;
-   font-weight: 700;
-   color: white; 
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
 }
-.navlist{
-    display:flex;
+
+.navlist {
+    display: flex;
 }
-.navlist a{
+
+.navlist a {
     color: white;
     margin-left: 60px;
-    font-size:15px;
+    font-size: 15px;
     font-weight: 600;
     border-bottom: 2px solid transparent;
     transition: all .55s ease;
 }
-.navlist a:hover{
+
+.navlist a:hover {
     border-bottom: 2px solid white;
 }
+
+.card-body {
+    max-height: 430px; 
+    overflow: auto;
+}
+.card-body::-webkit-scrollbar {
+    width: 10px; 
+}
+
+.card-body::-webkit-scrollbar-thumb {
+    background-color: #afacac; 
+    border-radius: 8px; 
+}
+
+.card-body::-webkit-scrollbar-track {
+    background-color: #808080; 
+}
+
+.card-body::-webkit-scrollbar-corner {
+    background-color: #808080; 
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #302f2f;
+}
+
 #menu.icon{
     color:white;
     font-size: 30px;
@@ -141,7 +85,7 @@ header{
     background: linear-gradient(245.59deg, #555 0%, #333 28.53%, #222 75.52%);
     position:relative;
     display:grid;
-    grid-template-columns: repeat(1,1fr);
+    grid-template-columns: repeat(2,1fr);
     align-items:center;
     gap: 2rem;
 }
@@ -152,28 +96,30 @@ section{
 .bank-text h5{
     font-size: 14px;
     font-weight: 400;
-    color:white;
+    color:rgb(222, 12, 12);
     margin-bottom: 10px;
     margin-top: 80px;
 }
 .bank-text h1{
     font-size: 70px;
     line-height:1;
-    color:white;
+    color:rgb(247, 12, 12);
     margin: 0 0 45px;
-    margin-top: 100px;
 }
+
 .bank-text h4{
     font-size: 18px;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 10px;
+    font-weight: 600;   
+    color: rgb(180, 177, 177);
+    margin-top: -90px;
+    margin-left: -200px;
 }
 .bank-text p{
-    color: white;
+    color: rgb(123, 122, 122);
     font-size:15px;
     line-height: 1.9;
-    margin-bottom: 40px;
+    margin-left:-200px;
+    margin-top: 0%;
 }
 .bank-img img{
     margin-top: 50px;
@@ -201,7 +147,7 @@ section{
 .bank-text a:hover{
     background: transparent;
     border: 1px solid white;
-    transform: translateY(3px);
+    transform: translateX(8px);
 }
 .bank-text a.ctaa{
    background: transparent;
@@ -240,16 +186,17 @@ section{
 .scroll-down i:hover{
     transform: translate(-5px);
 }
-.bank-login{
-    text-align: center;
-}
+
 .bank-login form {
     display: flex;
-    max-width: 100px;
-    margin-top: -35px;
+    flex-direction: column;
+    max-width: 600px;
+    margin-top: -10px;
     color: white;
+    background-color: #808080;
+    padding: 3em;
     border-radius: 8px;
-    justify-content: center;
+    margin-bottom: 2em;
   } 
   .bank-login form label {
     margin-bottom: 0.5em;
@@ -263,22 +210,17 @@ section{
   }
   
   .bank-login form button {
-    background-color: #555;
+    background-color: #4caf50;
     color: #fff;
     padding: 0.5em;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
-    margin-bottom:-40px;
-    transition: all .55s ease;
-    margin-left: 10px;
+    margin-bottom: 1.0em;
   }
   
   .bank-login form button:hover {
-    background: #990f02;
-    border: 1px solid white;
-    transform: translateY(-2px);
+    background-color: #45a049;
   }
 @media(max-width: 1535px){
     header{
@@ -323,7 +265,7 @@ section{
         transition: .2s;
     }
     .bank-text{
-        padding-top: 0px;
+        padding-top: 115px;
     }
     .bank-img{
         text-align: center;
@@ -396,7 +338,6 @@ section{
         width: 100%;
         height: auto;
     }
-
 }
 .bank-account {
     color: white;
@@ -411,8 +352,49 @@ section{
     margin-bottom: 0px;
     margin-top: -10px;
 }
+.container
+{
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(215, 214, 214, 0.1);
+    margin-bottom: -20px;
+    margin-top: 50px;
+    position:relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
+    display: flex;
+
+    align-items: center; 
+
+    justify-content: center; 
+  
+    text-align: center; 
+}
+.container .left_side   
+{
+    position:relative;
+    padding: 10px;
+    color: white;
+    background-color: #808080;
+    width: 275px;
+    height: 150px;
+    border-radius: 8px;
+    margin-left: -20px;
+}
+.container .right_side
+{
+    position:relative;
+    padding: 10px;
+    color: white;
+    background-color: #808080;
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    margin-left: 25px;
+}
 .bank-text-dashboard a{
+    display: block;
     color: white;
     background: #808080;
     border: 1px solid transparent;
@@ -441,67 +423,87 @@ footer {
     bottom: 0;
     width: 100%;
   }
-  table {
-    border-collapse: collapse;
+
+table {
     width: 100%;
-    color: white;
+    border-collapse:separate;
+    border:solid rgb(83, 81, 81) 4px;
+    border-radius:6px;
 }
 
+button {
+    background: #434444;
+    width: 100px;
+    border: none;
+    outline: none;
+    color: #fff;
+    height: 35px;
+    border-radius: 30px;
+    margin-top: 0px;
+    box-shadow: 0px 5px 15px 0px rgba(88, 88, 88, 0.3);
+  }
+
+  form input {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #1c1b1b;
     padding: 10px;
-    color: white;
-    background-color: #808080;
-    max-height: 20px;
-    text-align: center;
-    justify-content: center;
+    text-align: left;
+color: white;
+background-color: #302f2f;
+
+}
+
+.customrows{
+    border: 2px solid #545252;
+    padding: 15px;
+    text-align: left;
+color: white;
+background-color: #5a5959;
 }
 h2 {
     color: white;
-} 
-form{
-    margin-top:20px;
-    color: white;
-    text-align:center;
-    font-size: 13px;
-}
-
-
+}  
 .bank-text-dashboard{
-    margin-top: 280px;
+    margin-top: 0px;
 }
-.bank-text-dashboard form button:hover{
-    background: #3cb043;
-    border: 1px solid white;
-    transform: translateY(-2px);
-}
-    </style>
-</head>
-
-<body>
-<header>
-    <a href "#" class="logo">NOIR CAPITAL BANK</a>
-
-    <ul class="navlist">
-      <li><a href="homepage.html">Home</a></li>
-      <li><a href="login.php">Sign In</a></li>
-      <li><a href="contact1.php">Contact</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-    <div class="bx bx-menu" id="menu-icon"></div>
-  </header>
-  <section class="bank">
-  <div class="bank-text">
-    <div class="message">
-        <h3>You have been successfully logged out</h3>
-        <a href="homepage.html" class="link">Return to Homepage</a>
-    </div>
-    </div>
-</section>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="home.js"></script>
-<footer>
-&copy; 2023 NOIR CAPITAL BANK. All rights reserved.
-</footer>
-</body>
-</html>
+.bank-text-dashboard form {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10px;
+    color: white;
+    position: relative;
+    text-align: center;
+    
+  }
+.bank-text-dashboard form button {
+    display: block;
+    color: white;
+    background: #808080;
+    border: 1px solid transparent;
+    padding: 12px 30px;
+    line-height: 1.4;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    text-transform:uppercase;
+    transition: all .25s ease;
+    margin-left: 120px;
+    max-width: 300px;
+    text-align:center;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .bank-text-dashboard form input {
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 300px;
+    margin-left:120px;
+  }

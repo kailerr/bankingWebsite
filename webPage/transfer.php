@@ -508,10 +508,10 @@ form{
     <header>
     <a href "#" class="logo">NOIR CAPITAL BANK</a>
         <ul class="navlist">
-        <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="contact1.php">Contact</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="../webPage/dashboard.php">Dashboard</a></li>
+        <li><a href="../webPage/contact1.php">Contact</a></li>
+        <li><a href="../webPage/about.html">About</a></li>
+        <li><a href="../processingPages/logout.php">Logout</a></li>
         </ul>
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
@@ -565,7 +565,7 @@ form{
   </div>
 </section>
 <script src="https://unpkg.com/scrollreveal"></script>
-<script src="home.js"></script>
+<script src="../js/home.js""></script>
 <footer>
 &copy; 2023 NOIR CAPITAL BANK. All rights reserved.
 </footer>
