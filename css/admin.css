@@ -133,8 +133,8 @@ section{
 }
 .bank-text a{
     display: incline-block;
-    color: white;
-    background: #333;
+    color: rgb(9, 9, 9);
+    background: #8f8d8d;
     border: 1px solid transparent;
     padding: 12px 30px;
     line-height: 1.4;
