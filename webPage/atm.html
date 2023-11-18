@@ -38,45 +38,91 @@
       </ul>
       <div class="bx bx-menu" id="menu-icon"></div>
     </header>
-    <section class="bank">
+
+
+    <section class="bank2">
       <div class="atm">
         <h2>Virtual ATM</h2>
-        <div class="atm-screen">
-          <div class="input-field">
-            <label for="cardNumber">Card Number:</label>
-            <input
-              type="text"
-              id="cardNumber"
-              placeholder="Enter your card number"
-            />
+  
+      <div class="card-box" id="cardBox" style="display: none;">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="images/map.png" class="map">
+            <div class="cardrow">
+              <img src="images/chip.png" width="60px">
+              <img src="images/visa.png" width="80px">
+            </div>
+            <div class="cardrow number">
+              <p>****</p>
+              <p>****</p>
+              <p>****</p>
+              <p>3276</p>
+            </div>
+            <div class="cardrow owner">
+              <p>FRANK BUTT</p>
+              <P>VALID UNTIL</P>
+            </div>
+            <div class="cardrow expire">
+              <p> </p>
+              <p>01/27</p>
+            </div>
           </div>
-          <div class="input-field">
-            <label for="pin">PIN:</label>
-            <input type="password" id="pin" placeholder="Enter your PIN" />
-          </div>
-          <button onclick="withdraw()">Submit</button>
-        </div>
-        <br />
-        <div class="buttons">
-          <div class="row">
-            <button id="back">Back</button>
-          </div>
-          <div class="row">
-            <button id="but">WITHDRAW</button>
-            <button id="but">DEPOSIT</button>
-            <button id="but">BAL INQUIRY</button>
-            <button id="but">CHANGE PIN</button>
-            <button id="but">DETAILS</button>
-          </div>
-          <div class="row">
-            <button id="cancel">Cancel</button>
+  
+          <div class="card-back">
+            <img src="images/map.png" class="map">
+            <div class="blackbar">
+              <br><br><br>
+              <div class="cardrow cvv">
+                <div>
+                  <img src="images/pattern.png">
+                </div>
+                <p>321</p>
+              </div>
+              <div class="cardrow cardtext">
+                <p>Empowering Your Financial Noir: Noir Capital Bank - 
+                  Your Gateway to Secure Transactions.</p>
+              </div>
+              <div class="cardrow">
+                <p></p>
+                <img class="visa" src="images/visa.png" width="80px">
+              </div>
+            </div>
           </div>
         </div>
       </div>
+  
+  
+        <div class="atm-screen" id="atmScreen">
+        <div class="input-field">
+          <label for="cardNumber">Card Number:</label>
+          <input type="text" id="cardNumber" placeholder="Enter your card number">
+        </div>
+        <div class="input-field">
+          <label for="pin">PIN:</label>
+          <input type="password" id="pin" placeholder="Enter your PIN">
+        </div>
+        <button type="button" onclick="submit()">Submit</button>
+      </div>
+      <div class="buttons-container" id="buttonsContainer" style="display: none;">
+        <h3 id="greetingMessage"></h3>
+        <div class="row">
+          <button id="but">WITHDRAW</button>
+          <button id="but">BAL INQUIRY</button>
+          <button id="but">CHANGE PIN</button>
+        </div>
+        <div class="row">
+          <button id="cancel">Cancel Transaction</button>
+        </div>
+      </div>
+      </div>
     </section>
-    <div class="icons"></div>
-
+  
+  
+    <div class="icons">
+    </div>
+  
     <script src="https://unpkg.com/scrollreveal"></script>
+  
 
     <script src="../js/home.js"></script>
     <footer>&copy; 2023 NOIR CAPITAL BANK. All rights reserved.</footer>
